@@ -1,0 +1,374 @@
+#N canvas 0 0 1490 893 10;
+#X text 50 30 on/off;
+#X obj 51 172 *~;
+#X obj 70 140 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 4700 1;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array kick 117580 float 4 black #80ffff;
+#X coords 0 1 117579 -1 200 140 1;
+#X restore 390 60 graph;
+#X obj 240 60 soundfiler;
+#X obj 260 230 *~;
+#X obj 260 270 dac~;
+#X obj 50 210 dac~;
+#X obj 300 210 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 3200 1;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array cymbal 12377 float 4 black #ff0000;
+#X coords 0 1 12376 -1 200 140 1;
+#X restore 850 110 graph;
+#X msg 240 20 read -resize drum.wav kick;
+#X obj 640 80 soundfiler;
+#X msg 640 40 read -resize hihat.wav cymbal;
+#X obj 610 220 *~;
+#X obj 600 270 dac~;
+#X obj 670 220 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 2850 1;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array other 22050 float 4 black #ffff00;
+#X coords 0 1 22049 -1 200 140 1;
+#X restore 1280 120 graph;
+#X obj 1080 90 soundfiler;
+#X obj 1090 230 *~;
+#X obj 1090 270 dac~;
+#X obj 1130 210 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 3900 1;
+#X msg 1070 50 read -resize weird.wav other;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array notes 16 float 7 #00b75b #000000;
+#A 0 62 70 74 70 74 67 79 74 70 55 58 62 70 74 67 55;
+#X coords 0 127 16 0 200 140 1;
+#X restore 230 600 graph;
+#X obj 10 660 tabread~ notes;
+#X obj 60 580 phasor~;
+#X floatatom 60 540 5 0 0 0 - - -, f 5;
+#X obj 120 650 mtof;
+#X obj 110 680 osc~;
+#X obj 110 800 *~;
+#X obj 110 850 dac~;
+#X obj 130 770 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 1000 1;
+#X obj 940 780 f;
+#X obj 980 780 + 1;
+#X obj 940 710 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 604 794 tabwrite notes;
+#X floatatom 440 710 5 0 0 0 - - -, f 5;
+#X floatatom 474 714 5 0 0 0 - - -, f 5;
+#X floatatom 504 714 5 0 0 0 - - -, f 5;
+#X floatatom 534 714 5 0 0 0 - - -, f 5;
+#X floatatom 564 714 5 0 0 0 - - -, f 5;
+#X floatatom 594 714 5 0 0 0 - - -, f 5;
+#X floatatom 624 714 5 0 0 0 - - -, f 5;
+#X floatatom 654 714 5 0 0 0 - - -, f 5;
+#X obj 130 570 metro 30;
+#X obj 130 530 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 1 1;
+#X obj 120 620 snapshot~;
+#X obj 110 730 /~ 2;
+#X floatatom 690 720 5 0 0 0 - - -, f 5;
+#X floatatom 720 720 5 0 0 0 - - -, f 5;
+#X floatatom 750 720 5 0 0 0 - - -, f 5;
+#X floatatom 780 720 5 0 0 0 - - -, f 5;
+#X floatatom 810 720 5 0 0 0 - - -, f 5;
+#X floatatom 840 720 5 0 0 0 - - -, f 5;
+#X floatatom 870 720 5 0 0 0 - - -, f 5;
+#X floatatom 900 720 5 0 0 0 - - -, f 5;
+#X obj 60 620 *~ 18;
+#X msg 40 510 0.5;
+#X obj 514 634 unpack f f f f f f f f f f f f f f f f;
+#X obj 800 580 select 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15;
+#X obj 940 740 uzi 16;
+#X obj 940 820 % 16;
+#X msg 80 510 0, f 2;
+#X obj 61 92 bass;
+#X obj 51 52 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 80 50 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 260 160 kick;
+#X obj 240 120 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 260 120 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 300 120 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X text 240 100 on/off;
+#X text 300 100 arraysize;
+#X obj 660 180 cymbal;
+#X obj 650 150 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 670 150 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 690 150 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X text 640 120 on/off;
+#X text 690 120 arraysize;
+#X obj 1090 190 other;
+#X obj 1080 150 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 1100 150 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 1120 150 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X text 1070 120 on/off;
+#X text 1120 120 arraysize;
+#X msg 1090 620 read -resize heartbeat.wav heart;
+#X obj 1170 670 soundfiler;
+#X obj 1050 720 heart;
+#X obj 1040 690 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 1060 690 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 1090 690 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 1050 760 *~;
+#X obj 1110 720 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 1800 1;
+#X obj 1050 800 dac~;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array heart 357606 float 4 black #ff8000;
+#X coords 0 1 357605 -1 200 140 1;
+#X restore 1250 690 graph;
+#X text 1020 660 on/off;
+#X text 1080 660 arraysize;
+#X msg 240 300 read -resize flute.wav flute;
+#X obj 290 340 soundfiler;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array flute 332313 float 4 black #8000ff;
+#X coords 0 1 332312 -1 200 140 1;
+#X restore 390 340 graph;
+#X obj 262 460 flute;
+#X obj 242 430 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 272 430 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 302 430 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X text 252 410 on/off;
+#X text 302 410 arraysize;
+#X obj 282 514 *~;
+#X obj 290 550 dac~;
+#X obj 320 490 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 2000 1;
+#X msg 480 600 62 70 74 70 74 67 79 74 70 55 58 62 70 74 67 55;
+#X obj 630 450 allpassFilter;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array orchestra 314135 float 4 black #ff0080;
+#X coords 0 1 314134 -1 200 140 1;
+#X restore 850 400 graph;
+#X msg 660 300 read -resize orchestra.wav orchestra;
+#X obj 730 340 soundfiler;
+#X obj 630 390 orchestra;
+#X obj 610 360 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 640 360 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 680 360 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 660 500 *~;
+#X obj 658 546 dac~;
+#X obj 690 480 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 1700 1;
+#X floatatom 690 430 5 0 0 0 - - -, f 5;
+#X floatatom 730 430 5 0 0 0 - - -, f 5;
+#X msg 690 410 3000;
+#X msg 730 410 0.7;
+#X obj 710 380 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X text 600 330 on/off;
+#X msg 1100 310 read -resize gravityFalls.wav bells;
+#X obj 1180 350 soundfiler;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array bells 132828 float 4 black #0000ff;
+#X coords 0 1 132827 -1 200 140 1;
+#X restore 1270 380 graph;
+#X obj 1090 410 bells;
+#X obj 1060 370 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 1090 370 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 1120 370 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X text 650 330 correct size;
+#X obj 1090 470 *~;
+#X obj 1088 516 dac~;
+#X obj 1120 440 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 2400 1;
+#X text 20 270 Project Objective: Use wavetables \, file playback \,
+and sequencers to create a sequencerin which different intruments can
+be turned on and off. The files should be cycled using phasors and
+the phasors should ramp up to the "correct" number for all of the sounds
+to be in the same key and things are not being played to quickly or
+too slowly. The size of the arrays should be properly set as well to
+ensure the key is the same., f 32;
+#X text 1040 340 on/off;
+#X text 1100 340 arraysize;
+#X text 570 580 set values for wavetable;
+#X text 880 680 set values for wavetable;
+#X text 120 510 on/off;
+#X text 40 480 start/stop;
+#X text 1150 420 volume;
+#X text 1160 190 volume;
+#X text 750 190 volume;
+#X text 330 190 volume;
+#X text 130 120 volume;
+#X text 370 510 volume;
+#X text 170 790 volume;
+#X text 1160 740 volume;
+#X text 420 10 <-- Click this to read the file. It should show the
+wave on the array, f 27;
+#X text 830 40 <-- Click this to read the file. It should show the
+wave on the array, f 27;
+#X text 1260 50 <-- Click this to read the file. It should show the
+wave on the array, f 27;
+#X text 1320 310 <-- Click this to read the file. It should show the
+wave on the array, f 27;
+#X text 1300 620 <-- Click this to read the file. It should show the
+wave on the array, f 27;
+#X text 890 300 <-- Click this to read the file. It should show the
+wave on the array, f 27;
+#X text 710 360 load values into all pass filter;
+#X text 420 290 <-- Click this to read the file. It should show the
+wave on the array, f 27;
+#X text 740 500 volume;
+#X connect 1 0 7 0;
+#X connect 1 0 7 1;
+#X connect 2 0 1 1;
+#X connect 5 0 6 0;
+#X connect 5 0 6 1;
+#X connect 8 0 5 1;
+#X connect 10 0 4 0;
+#X connect 12 0 11 0;
+#X connect 13 0 14 0;
+#X connect 13 0 14 1;
+#X connect 15 0 13 1;
+#X connect 18 0 19 0;
+#X connect 18 0 19 1;
+#X connect 20 0 18 1;
+#X connect 21 0 17 0;
+#X connect 23 0 45 0;
+#X connect 24 0 55 0;
+#X connect 25 0 24 0;
+#X connect 26 0 27 0;
+#X connect 27 0 46 0;
+#X connect 28 0 29 0;
+#X connect 28 0 29 1;
+#X connect 30 0 28 1;
+#X connect 31 0 32 0;
+#X connect 31 0 60 0;
+#X connect 32 0 31 1;
+#X connect 33 0 59 0;
+#X connect 35 0 34 0;
+#X connect 36 0 34 0;
+#X connect 37 0 34 0;
+#X connect 38 0 34 0;
+#X connect 39 0 34 0;
+#X connect 40 0 34 0;
+#X connect 41 0 34 0;
+#X connect 42 0 34 0;
+#X connect 43 0 45 0;
+#X connect 44 0 43 0;
+#X connect 45 0 26 0;
+#X connect 46 0 28 0;
+#X connect 47 0 34 0;
+#X connect 48 0 34 0;
+#X connect 49 0 34 0;
+#X connect 50 0 34 0;
+#X connect 51 0 34 0;
+#X connect 52 0 34 0;
+#X connect 53 0 34 0;
+#X connect 54 0 34 0;
+#X connect 55 0 23 0;
+#X connect 56 0 25 0;
+#X connect 57 0 35 0;
+#X connect 57 1 36 0;
+#X connect 57 2 37 0;
+#X connect 57 3 38 0;
+#X connect 57 4 39 0;
+#X connect 57 5 40 0;
+#X connect 57 6 41 0;
+#X connect 57 7 42 0;
+#X connect 57 8 47 0;
+#X connect 57 9 48 0;
+#X connect 57 10 49 0;
+#X connect 57 11 50 0;
+#X connect 57 12 51 0;
+#X connect 57 13 52 0;
+#X connect 57 14 53 0;
+#X connect 57 15 54 0;
+#X connect 58 0 35 0;
+#X connect 58 1 36 0;
+#X connect 58 2 37 0;
+#X connect 58 3 38 0;
+#X connect 58 4 39 0;
+#X connect 58 5 40 0;
+#X connect 58 6 41 0;
+#X connect 58 7 42 0;
+#X connect 58 8 47 0;
+#X connect 58 9 48 0;
+#X connect 58 10 49 0;
+#X connect 58 11 50 0;
+#X connect 58 12 51 0;
+#X connect 58 13 52 0;
+#X connect 58 14 53 0;
+#X connect 58 15 54 0;
+#X connect 59 0 31 0;
+#X connect 60 0 34 1;
+#X connect 60 0 58 0;
+#X connect 61 0 25 0;
+#X connect 62 0 1 0;
+#X connect 63 0 62 0;
+#X connect 64 0 62 1;
+#X connect 65 0 5 0;
+#X connect 66 0 65 0;
+#X connect 67 0 65 1;
+#X connect 68 0 65 2;
+#X connect 71 0 13 0;
+#X connect 72 0 71 0;
+#X connect 73 0 71 1;
+#X connect 74 0 71 2;
+#X connect 77 0 18 0;
+#X connect 78 0 77 0;
+#X connect 79 0 77 1;
+#X connect 80 0 77 2;
+#X connect 83 0 84 0;
+#X connect 85 0 89 0;
+#X connect 86 0 85 0;
+#X connect 87 0 85 1;
+#X connect 88 0 85 2;
+#X connect 89 0 91 0;
+#X connect 89 0 91 1;
+#X connect 90 0 89 1;
+#X connect 95 0 96 0;
+#X connect 98 0 104 0;
+#X connect 99 0 98 0;
+#X connect 100 0 98 1;
+#X connect 101 0 98 2;
+#X connect 104 0 105 0;
+#X connect 104 0 105 1;
+#X connect 106 0 104 1;
+#X connect 107 0 57 0;
+#X connect 108 0 116 0;
+#X connect 110 0 111 0;
+#X connect 112 0 108 0;
+#X connect 113 0 112 0;
+#X connect 114 0 112 1;
+#X connect 115 0 112 2;
+#X connect 116 0 117 0;
+#X connect 116 0 117 1;
+#X connect 118 0 116 1;
+#X connect 119 0 108 1;
+#X connect 120 0 108 2;
+#X connect 121 0 119 0;
+#X connect 122 0 120 0;
+#X connect 123 0 121 0;
+#X connect 123 0 122 0;
+#X connect 125 0 126 0;
+#X connect 128 0 133 0;
+#X connect 129 0 128 0;
+#X connect 130 0 128 1;
+#X connect 131 0 128 2;
+#X connect 133 0 134 0;
+#X connect 133 0 134 1;
+#X connect 135 0 133 1;
